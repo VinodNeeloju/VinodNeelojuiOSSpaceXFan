@@ -25,17 +25,17 @@ class SpaceXRocketsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        if #available(iOS 11.0, *) {
-//            self.navigationController?.navigationBar.prefersLargeTitles = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
         self.tableView.register(UINib.init(nibName: String(describing: RocketInfoTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: RocketInfoTableViewCell.self))
         viewModel = SpaceXRocketsViewModel.init(with: self)
         viewModel?.fetchRocketsList()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     /*
      
     // MARK: - Navigation
@@ -76,11 +76,43 @@ extension SpaceXRocketsViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RocketInfoTableViewCell.self)) as! RocketInfoTableViewCell
         guard let rocketResponse = self.viewModel?.rocketsList?[indexPath.row] else { return cell }
         cell.rocketResponse = rocketResponse
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            guard let rocketResponse = self.viewModel?.rocketsList?[indexPath.row] else { return }
+            let viewController = RocketDetailsViewController.create()
+            let vm = RocketDetailsViewModel()
+            vm.rocketResponse = rocketResponse
+            viewController.viewModel = vm
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
+//MARK: - RocketInfoTableViewCellDelegate
+extension SpaceXRocketsViewController : RocketInfoTableViewCellDelegate{
+    func bookmarkAction(with rocketResponse: RocketResponse, sender: UIButton) {
+        _ =  UIApplication.topViewController()?.checkIsUserAuthorized({ (_ autherizedUser) in
+            if autherizedUser == true {
+                let flag = sender.isSelected
+                DispatchQueue.main.async {
+                    sender.isSelected = !sender.isSelected
+                }
+                guard let uid = FirebaseAuthenticationManager.shared.user?.uid else { return }
+                guard let id = rocketResponse.id else { return }
+                if flag == false {
+                    FirebaseStoreManager.shared.addBookmark(with: uid, bookmarkId: id)
+                } else {
+                    FirebaseStoreManager.shared.removeBookmark(with: uid, bookmarkId: id)
+                }
+            }
+        })
+    }
+}

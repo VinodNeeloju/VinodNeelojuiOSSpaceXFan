@@ -36,12 +36,19 @@ class SignInViewModel: NSObject {
             if status == false {
                 self.delegate?.requestFailed(with: error ?? "Request failed please try after sometime", failed: 0)
             } else {
-                self.delegate?.gotTheSuccessResponse()
+                FirebaseStoreManager.shared.fetchAllBookmarkIds { (_, _, _) in
+                    self.delegate?.gotTheSuccessResponse()
+                    NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "userSignedIn")))
+                }
             }
         }
     }
     
-    public func createAccount(with email: String?, password: String?, confirmPassword : String?) {
+    public func createAccount(with name: String?, email: String?, password: String?, confirmPassword : String?) {
+        guard let name = name else {
+            self.delegate?.requestFailed(with: "Please enter name", failed: 1)
+            return
+        }
         guard let email = email, email.isValidEmail == true else {
             self.delegate?.requestFailed(with: "Please enter valid email", failed: 1)
             return
@@ -58,13 +65,13 @@ class SignInViewModel: NSObject {
             if status == false {
                 self.delegate?.requestFailed(with: error ?? "Request failed please try after sometime", failed: 0)
             } else {
+                FirebaseStoreManager.shared.createUserWithDetails(username: name)
                 self.delegate?.gotTheSuccessResponse()
+               
             }
         }
     }
-    
-    
-    
+        
 }
 
 protocol SignInProtocal {

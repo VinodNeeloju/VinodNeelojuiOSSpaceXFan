@@ -17,6 +17,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     //MARK: - IBOutlet
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -45,7 +46,7 @@ class CreateAccountViewController: UIViewController {
     
     //MARK: - IBAction
     @IBAction func signUpButtonAction(_ sender: UIButton) {
-        self.viewModel?.createAccount(with: self.emailTextField.text, password: self.passwordTextField.text, confirmPassword: self.confirmPasswordTextField.text)
+        self.viewModel?.createAccount(with: self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, confirmPassword: self.confirmPasswordTextField.text)
     }
     @IBAction func closeButtonAction(_ sender: UIButton) {
         Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -57,7 +58,7 @@ class CreateAccountViewController: UIViewController {
 extension CreateAccountViewController : SignInProtocal {
     func gotTheSuccessResponse() {
         //SignIn successfull close the signin screen and go to the home screen
-        self.dismiss(animated: true, completion: nil)
+        Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     func requestFailed(with reason: String?, failed field: Int) {

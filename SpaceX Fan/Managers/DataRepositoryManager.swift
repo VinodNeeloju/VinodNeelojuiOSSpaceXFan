@@ -51,26 +51,14 @@ class DataRepositoryManager: NSObject {
         }
     }
     
-    ///This methode is to signin user in firebase with given email and password.
+    ///This methode will signin the user in firebase with given email and password.
     static func signInUser(with email : String, password : String, _ complation : ((_ status : Bool, _ error : String?) -> ())?) {
-        Auth.auth().signIn(withEmail: email, password: password) { (_ authDataResult, _ error) in
-            if authDataResult != nil, error == nil {
-                complation?(true, "Succesfully signedIn")
-            } else {
-                complation?(false, "Failed with reason\(error?.localizedDescription ?? "")")
-            }
-        }
+        FirebaseAuthenticationManager.shared.signInFirebseAccount(with: email, password: password, complation: complation)
     }
     
     ///This methode will create an user in firebase with given email and password.
     static func createUser(with email : String, password : String, _ complation : ((_ status : Bool, _ error : String?) -> ())?) {
-        Auth.auth().createUser(withEmail: email, password: password) { (_ authDataResult, _ error) in
-            if authDataResult != nil, error == nil {
-                complation?(true, "Succesfully createdAccount")
-            } else {
-                complation?(false, "Failed with reason\(error?.localizedDescription ?? "")")
-            }
-        }
+        FirebaseAuthenticationManager.shared.createFirebseAccount(with: email, password: password, complation: complation)
     }
     
 }

@@ -15,13 +15,14 @@
 		3F15E96C268322A30024CEC3 /* Failures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E96B268322A30024CEC3 /* Failures.swift */; };
 		3F15E96F2683258E0024CEC3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E96E2683258E0024CEC3 /* UIColor+Extension.swift */; };
 		3F15E973268329460024CEC3 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E972268329460024CEC3 /* NavigationViewController.swift */; };
+		3F44ADE12686E6FF004217E4 /* FirebaseStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */; };
+		3F44ADFF26876978004217E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F44ADFE26876978004217E4 /* GoogleService-Info.plist */; };
 		3F6905912682D4570065022C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905902682D4570065022C /* AppDelegate.swift */; };
 		3F6905932682D4570065022C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905922682D4570065022C /* SceneDelegate.swift */; };
 		3F6905982682D4570065022C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6905962682D4570065022C /* Main.storyboard */; };
 		3F69059B2682D4570065022C /* SpaceX_Fan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905992682D4570065022C /* SpaceX_Fan.xcdatamodeld */; };
 		3F69059D2682D45B0065022C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F69059C2682D45B0065022C /* Assets.xcassets */; };
 		3F6905A02682D45B0065022C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F69059E2682D45B0065022C /* LaunchScreen.storyboard */; };
-		3F6905AE2682D4D60065022C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905AC2682D4D60065022C /* DataManager.swift */; };
 		3F6905AF2682D4D60065022C /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905AD2682D4D60065022C /* ServiceManager.swift */; };
 		3F6905B22682D7B20065022C /* SpaceXRocketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905B12682D7B20065022C /* SpaceXRocketsViewController.swift */; };
 		3F6905B72682D7E60065022C /* FavoriteRocketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905B62682D7E60065022C /* FavoriteRocketsViewController.swift */; };
@@ -39,7 +40,6 @@
 		3F6905D92682E1470065022C /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905D22682E1470065022C /* Flickr.swift */; };
 		3F6905DA2682E1470065022C /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905D32682E1470065022C /* Patch.swift */; };
 		3F6905DE2682E7A90065022C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905DD2682E7A90065022C /* Constants.swift */; };
-		3F838AB526856EC3007B77C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F838AB426856EC3007B77C0 /* GoogleService-Info.plist */; };
 		3F838AB826856FF6007B77C0 /* FirebaseAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838AB726856FF6007B77C0 /* FirebaseAuthenticationManager.swift */; };
 		3F838ABB26857A3D007B77C0 /* LocalAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838ABA26857A3D007B77C0 /* LocalAuthenticationManager.swift */; };
 		3F838ABF26858063007B77C0 /* AuthenticateOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838ABE26858063007B77C0 /* AuthenticateOptionsViewController.swift */; };
@@ -48,8 +48,13 @@
 		3F838ADE268646EB007B77C0 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838ADD268646EB007B77C0 /* CreateAccountViewController.swift */; };
 		3F838AF5268653F7007B77C0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838AF4268653F6007B77C0 /* UIViewController+Extension.swift */; };
 		3F838AF926865518007B77C0 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838AF826865518007B77C0 /* UIApplication+Extension.swift */; };
-		3F838AFE268658DA007B77C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838AFD268658DA007B77C0 /* SettingsViewController.swift */; };
-		3F838B0126865AB0007B77C0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F838B0026865AB0007B77C0 /* SettingsTableViewCell.swift */; };
+		3FA1B2B62687B2B40072B63A /* DetailsVCHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B2B52687B2B40072B63A /* DetailsVCHeaderTableViewCell.swift */; };
+		3FA1B2BA2687B2CA0072B63A /* DetailsVCFlightDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B2B92687B2CA0072B63A /* DetailsVCFlightDetailsTableViewCell.swift */; };
+		3FA1B2BD2687B2E50072B63A /* DetailsVCDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B2BC2687B2E50072B63A /* DetailsVCDetailsTableViewCell.swift */; };
+		3FA1B2C02687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B2BF2687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift */; };
+		3FA1B2C42687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B2C32687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift */; };
+		3FF239562687A488003ED96A /* RocketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF239552687A487003ED96A /* RocketDetailsViewController.swift */; };
+		3FF239592687A4B2003ED96A /* RocketDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF239582687A4B2003ED96A /* RocketDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +66,8 @@
 		3F15E96E2683258E0024CEC3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3F15E972268329460024CEC3 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		3F37678E26839AD80069E7E9 /* SpaceX Fan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceX Fan-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoreManager.swift; sourceTree = "<group>"; };
+		3F44ADFE26876978004217E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F69058D2682D4570065022C /* SpaceX Fan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX Fan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6905902682D4570065022C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6905922682D4570065022C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +76,6 @@
 		3F69059C2682D45B0065022C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F69059F2682D45B0065022C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F6905A12682D45B0065022C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F6905AC2682D4D60065022C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3F6905AD2682D4D60065022C /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		3F6905B12682D7B20065022C /* SpaceXRocketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXRocketsViewController.swift; sourceTree = "<group>"; };
 		3F6905B62682D7E60065022C /* FavoriteRocketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRocketsViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +93,6 @@
 		3F6905D22682E1470065022C /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		3F6905D32682E1470065022C /* Patch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		3F6905DD2682E7A90065022C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3F838AB426856EC3007B77C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F838AB726856FF6007B77C0 /* FirebaseAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationManager.swift; sourceTree = "<group>"; };
 		3F838ABA26857A3D007B77C0 /* LocalAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthenticationManager.swift; sourceTree = "<group>"; };
 		3F838ABE26858063007B77C0 /* AuthenticateOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateOptionsViewController.swift; sourceTree = "<group>"; };
@@ -96,8 +101,13 @@
 		3F838ADD268646EB007B77C0 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3F838AF4268653F6007B77C0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3F838AF826865518007B77C0 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
-		3F838AFD268658DA007B77C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		3F838B0026865AB0007B77C0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		3FA1B2B52687B2B40072B63A /* DetailsVCHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		3FA1B2B92687B2CA0072B63A /* DetailsVCFlightDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCFlightDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		3FA1B2BC2687B2E50072B63A /* DetailsVCDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		3FA1B2BF2687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCInternalLinksTableViewCell.swift; sourceTree = "<group>"; };
+		3FA1B2C32687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVCImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		3FF239552687A487003ED96A /* RocketDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailsViewController.swift; sourceTree = "<group>"; };
+		3FF239582687A4B2003ED96A /* RocketDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailsViewModel.swift; sourceTree = "<group>"; };
 		6A12D753ED63B6DB338E8876 /* Pods-SpaceX Fan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceX Fan.debug.xcconfig"; path = "Target Support Files/Pods-SpaceX Fan/Pods-SpaceX Fan.debug.xcconfig"; sourceTree = "<group>"; };
 		70FF6CB8551150394BA6EF2A /* Pods_SpaceX_Fan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceX_Fan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29F611C3A750108834E9C47 /* Pods-SpaceX Fan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceX Fan.release.xcconfig"; path = "Target Support Files/Pods-SpaceX Fan/Pods-SpaceX Fan.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +139,10 @@
 			children = (
 				3F15E95C26830B8C0024CEC3 /* RocketInfoTableViewCell.swift */,
 				3F15E95D26830B8C0024CEC3 /* RocketInfoTableViewCell.xib */,
-				3F838B0026865AB0007B77C0 /* SettingsTableViewCell.swift */,
+				3FA1B2B52687B2B40072B63A /* DetailsVCHeaderTableViewCell.swift */,
+				3FA1B2B92687B2CA0072B63A /* DetailsVCFlightDetailsTableViewCell.swift */,
+				3FA1B2BC2687B2E50072B63A /* DetailsVCDetailsTableViewCell.swift */,
+				3FA1B2BF2687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -153,7 +166,7 @@
 				3F6905B42682D7B90065022C /* TabbarViewControllers */,
 				3F15E972268329460024CEC3 /* NavigationViewController.swift */,
 				3F6905BC2682D80D0065022C /* TabbarViewController.swift */,
-				3F838AFD268658DA007B77C0 /* SettingsViewController.swift */,
+				3FF239552687A487003ED96A /* RocketDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,7 +203,7 @@
 				3F69059C2682D45B0065022C /* Assets.xcassets */,
 				3F69059E2682D45B0065022C /* LaunchScreen.storyboard */,
 				3F6905A12682D45B0065022C /* Info.plist */,
-				3F838AB426856EC3007B77C0 /* GoogleService-Info.plist */,
+				3F44ADFE26876978004217E4 /* GoogleService-Info.plist */,
 				3F6905992682D4570065022C /* SpaceX_Fan.xcdatamodeld */,
 				3F37678E26839AD80069E7E9 /* SpaceX Fan-Bridging-Header.h */,
 			);
@@ -201,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				3F15E9712683291F0024CEC3 /* Controllers */,
+				3FA1B2C22687BA2F0072B63A /* CollectionViewCells */,
 				3F15E95B26830B6B0024CEC3 /* TableviewCells */,
 			);
 			path = Views;
@@ -228,6 +242,7 @@
 				3F6905C22682DBD90065022C /* FavoriteRocketsViewModel.swift */,
 				3F6905C52682DBED0065022C /* UpcomingLaunchesViewModel.swift */,
 				3F838AD526863249007B77C0 /* SignInViewModel.swift */,
+				3FF239582687A4B2003ED96A /* RocketDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,11 +250,11 @@
 		3F6905AB2682D49D0065022C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3F6905AC2682D4D60065022C /* DataManager.swift */,
 				3F6905AD2682D4D60065022C /* ServiceManager.swift */,
 				3F6905C92682DD010065022C /* DataRepositoryManager.swift */,
 				3F838AB726856FF6007B77C0 /* FirebaseAuthenticationManager.swift */,
 				3F838ABA26857A3D007B77C0 /* LocalAuthenticationManager.swift */,
+				3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -271,6 +286,14 @@
 				3F838ADD268646EB007B77C0 /* CreateAccountViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		3FA1B2C22687BA2F0072B63A /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1B2C32687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		E0C259A539E85CB3F4F05663 /* Frameworks */ = {
@@ -343,7 +366,7 @@
 			files = (
 				3F6905A02682D45B0065022C /* LaunchScreen.storyboard in Resources */,
 				3F69059D2682D45B0065022C /* Assets.xcassets in Resources */,
-				3F838AB526856EC3007B77C0 /* GoogleService-Info.plist in Resources */,
+				3F44ADFF26876978004217E4 /* GoogleService-Info.plist in Resources */,
 				3F6905982682D4570065022C /* Main.storyboard in Resources */,
 				3F15E95F26830B8C0024CEC3 /* RocketInfoTableViewCell.xib in Resources */,
 			);
@@ -400,22 +423,24 @@
 			files = (
 				3F6905B72682D7E60065022C /* FavoriteRocketsViewController.swift in Sources */,
 				3F6905DE2682E7A90065022C /* Constants.swift in Sources */,
+				3FA1B2B62687B2B40072B63A /* DetailsVCHeaderTableViewCell.swift in Sources */,
 				3F15E96C268322A30024CEC3 /* Failures.swift in Sources */,
+				3FF239562687A488003ED96A /* RocketDetailsViewController.swift in Sources */,
 				3F838ADE268646EB007B77C0 /* CreateAccountViewController.swift in Sources */,
 				3F15E96F2683258E0024CEC3 /* UIColor+Extension.swift in Sources */,
 				3F838AD626863249007B77C0 /* SignInViewModel.swift in Sources */,
 				3F6905C62682DBED0065022C /* UpcomingLaunchesViewModel.swift in Sources */,
 				3F6905D92682E1470065022C /* Flickr.swift in Sources */,
-				3F838B0126865AB0007B77C0 /* SettingsTableViewCell.swift in Sources */,
 				3F6905D72682E1470065022C /* Fairings.swift in Sources */,
+				3FF239592687A4B2003ED96A /* RocketDetailsViewModel.swift in Sources */,
 				3F6905D52682E1470065022C /* Cores.swift in Sources */,
 				3F6905BA2682D7FA0065022C /* UpcomingLaunchesViewController.swift in Sources */,
 				3F838ABB26857A3D007B77C0 /* LocalAuthenticationManager.swift in Sources */,
 				3F15E95E26830B8C0024CEC3 /* RocketInfoTableViewCell.swift in Sources */,
+				3FA1B2C02687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift in Sources */,
 				3F838AF926865518007B77C0 /* UIApplication+Extension.swift in Sources */,
 				3F15E968268315140024CEC3 /* String+Extension.swift in Sources */,
 				3F15E973268329460024CEC3 /* NavigationViewController.swift in Sources */,
-				3F6905AE2682D4D60065022C /* DataManager.swift in Sources */,
 				3F6905912682D4570065022C /* AppDelegate.swift in Sources */,
 				3F6905932682D4570065022C /* SceneDelegate.swift in Sources */,
 				3F838ABF26858063007B77C0 /* AuthenticateOptionsViewController.swift in Sources */,
@@ -424,17 +449,20 @@
 				3F6905D82682E1470065022C /* Reddit.swift in Sources */,
 				3F838AB826856FF6007B77C0 /* FirebaseAuthenticationManager.swift in Sources */,
 				3F6905C32682DBD90065022C /* FavoriteRocketsViewModel.swift in Sources */,
+				3FA1B2C42687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift in Sources */,
 				3F6905D42682E1470065022C /* Links.swift in Sources */,
 				3F6905AF2682D4D60065022C /* ServiceManager.swift in Sources */,
+				3F44ADE12686E6FF004217E4 /* FirebaseStoreManager.swift in Sources */,
 				3F838AF5268653F7007B77C0 /* UIViewController+Extension.swift in Sources */,
 				3F15E964268312630024CEC3 /* UIView+Extension.swift in Sources */,
 				3F6905DA2682E1470065022C /* Patch.swift in Sources */,
 				3F6905D62682E1470065022C /* RocketResponse.swift in Sources */,
 				3F838AC62685807A007B77C0 /* SignInViewController.swift in Sources */,
+				3FA1B2BA2687B2CA0072B63A /* DetailsVCFlightDetailsTableViewCell.swift in Sources */,
 				3F6905CA2682DD010065022C /* DataRepositoryManager.swift in Sources */,
 				3F6905BD2682D80D0065022C /* TabbarViewController.swift in Sources */,
+				3FA1B2BD2687B2E50072B63A /* DetailsVCDetailsTableViewCell.swift in Sources */,
 				3F6905B22682D7B20065022C /* SpaceXRocketsViewController.swift in Sources */,
-				3F838AFE268658DA007B77C0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

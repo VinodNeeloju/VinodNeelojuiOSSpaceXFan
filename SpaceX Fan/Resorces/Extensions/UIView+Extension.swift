@@ -115,4 +115,35 @@ extension UIView {
         self.layer.add(animation, forKey: "position")
     }
     
+    
+    func addGradient(_ size : CGSize, _ colors : [CGColor] = [
+        UIColor(red:0.25, green:0.37, blue:0.54, alpha:1).cgColor,
+        UIColor(red:0.12, green:0.19, blue:0.32, alpha:0).cgColor
+    ])
+    {
+        
+        let layer_ = self.viewWithTag(6565)
+        if layer_ != nil {
+            layer_?.removeFromSuperview()
+        }
+        
+        let layer = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        layer.layer.cornerRadius = self.layer.cornerRadius
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: 0, width: layer.frame.width, height: layer.frame.height)
+        gradient.colors = colors
+        gradient.locations = [0, 1]
+        gradient.startPoint = CGPoint(x: 0.5, y: 1)
+        gradient.endPoint = CGPoint(x: 0.5, y: 0)
+        gradient.cornerRadius = self.layer.cornerRadius
+        gradient.name = "GradLay"
+        layer.tag = 6565
+        layer.layer.addSublayer(gradient)
+        
+        self.addSubview(layer)
+        
+    }
+    
+    
 }

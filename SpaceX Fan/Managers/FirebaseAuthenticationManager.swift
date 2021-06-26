@@ -49,9 +49,12 @@ class FirebaseAuthenticationManager: NSObject {
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
-            complation?(true, "Account created successfully")
+            if authDataResult != nil, error == nil {
+                complation?(true, "Succesfully createdAccount")
+            } else {
+                complation?(false, "Failed with reason\(error?.localizedDescription ?? "")")
+            }
         }
-//        AuthDataResult
     }
     
     ///This method hit the firebase to sighIn to firebase account with the given email and password
@@ -69,7 +72,11 @@ class FirebaseAuthenticationManager: NSObject {
             return
         }
         Auth.auth().signIn(withEmail: email, password: password) { (authDataResult, error) in
-            complation?(true, "Succesfully loggedIn")
+            if authDataResult != nil, error == nil {
+                complation?(true, "Succesfully signedIn")
+            } else {
+                complation?(false, "\(error?.localizedDescription ?? "")")
+            }
         }
     }
     
@@ -78,6 +85,8 @@ class FirebaseAuthenticationManager: NSObject {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            LocalAuthenticationManager.shared.isUserAuthenticated = false
+            FirebaseStoreManager.shared.clearLocalStoreData()
         } catch let signOutError as NSError {
             print("signout error:\(signOutError)")
         }

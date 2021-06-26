@@ -21,6 +21,7 @@ class SpaceXRocketsViewModel: NSObject {
     init(with delegate : SpaceXRocketsProtocal) {
         super.init()
         self.delegate = delegate
+        NotificationCenter.default.addObserver(self, selector: #selector(userSignedIn), name: NSNotification.Name(rawValue: "userSignedIn"), object: nil)
     }
     
     public var rocketsList : [RocketResponse]?
@@ -28,13 +29,24 @@ class SpaceXRocketsViewModel: NSObject {
     /// To fetch all the rocket list from the server.
     public func fetchRocketsList() {
         DataRepositoryManager.fetchSpaceXRocketsList { (_ status, _ list, _ error) in
+            self.fetchFavouritesList()
             if status, let list = list {
                 self.rocketsList = list
-                self.delegate?.gotTheResponse()
             } else {
                 self.delegate?.requestFailed(with: error)
             }
         }
+    }
+    
+    ///Fetching the favourite list from firestore to show the favourite list and favorite status in the rockets list
+    private func fetchFavouritesList() {
+        FirebaseStoreManager.shared.fetchAllBookmarkIds { (_ status, _ ids, _ err) in
+            self.delegate?.gotTheResponse()
+        }
+    }
+    
+    @objc func userSignedIn() {
+        self.delegate?.gotTheResponse()
     }
 }
 

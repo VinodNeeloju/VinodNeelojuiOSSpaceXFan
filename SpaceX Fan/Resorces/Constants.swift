@@ -13,6 +13,10 @@ class Constants: NSObject {
     
     struct Apis {
         
+        static var isLive : Bool {
+            return false
+        }
+        
         static let BaseUrl = "https://api.spacexdata.com/v4"
         static let AllRocketListUrl = BaseUrl + "/launches"
         static let UpcomingRocketListUrl = BaseUrl + "/launches/upcoming"

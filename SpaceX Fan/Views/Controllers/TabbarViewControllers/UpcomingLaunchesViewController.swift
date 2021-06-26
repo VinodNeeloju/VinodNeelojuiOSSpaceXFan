@@ -8,13 +8,13 @@
 import UIKit
 
 class UpcomingLaunchesViewController: UIViewController {
-
+    
     /// create() will create the instace of the class and returns the storyboard instance of the class.
     static func create() -> UpcomingLaunchesViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UpcomingLaunchesViewController") as! UpcomingLaunchesViewController
         return vc
     }
-        
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,7 @@ class UpcomingLaunchesViewController: UIViewController {
     // MARK: - Override Methodes
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.tableView.register(UINib.init(nibName: String(describing: RocketInfoTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: RocketInfoTableViewCell.self))
@@ -31,17 +31,22 @@ class UpcomingLaunchesViewController: UIViewController {
         viewModel?.fetchRocketsList()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 
@@ -63,20 +68,54 @@ extension UpcomingLaunchesViewController : UpcomingLaunchesProtocal {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension UpcomingLaunchesViewController : UITableViewDataSource, UITableViewDelegate {
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       guard let count = self.viewModel?.rocketsList?.count else { return 0 }
-       return count
-   }
-   
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RocketInfoTableViewCell.self)) as! RocketInfoTableViewCell
-       guard let rocketResponse = self.viewModel?.rocketsList?[indexPath.row] else { return cell }
-       cell.rocketResponse = rocketResponse
-       return cell
-   }
-   
-   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return UITableView.automaticDimension
-   }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let count = self.viewModel?.rocketsList?.count else { return 0 }
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RocketInfoTableViewCell.self)) as! RocketInfoTableViewCell
+        guard let rocketResponse = self.viewModel?.rocketsList?[indexPath.row] else { return cell }
+        cell.rocketResponse = rocketResponse
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            guard let rocketResponse = self.viewModel?.rocketsList?[indexPath.row] else { return }
+            let viewController = RocketDetailsViewController.create()
+            let vm = RocketDetailsViewModel()
+            vm.rocketResponse = rocketResponse
+            viewController.viewModel = vm
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+}
+
+
+//MARK: - RocketInfoTableViewCellDelegate
+extension UpcomingLaunchesViewController : RocketInfoTableViewCellDelegate{
+    func bookmarkAction(with rocketResponse: RocketResponse, sender: UIButton) {
+        _ =  UIApplication.topViewController()?.checkIsUserAuthorized({ (_ autherizedUser) in
+            if autherizedUser == true {
+                let flag = sender.isSelected
+                DispatchQueue.main.async {
+                    sender.isSelected = !sender.isSelected
+                }
+                guard let uid = FirebaseAuthenticationManager.shared.user?.uid else { return }
+                guard let id = rocketResponse.id else { return }
+                if flag == false {
+                    FirebaseStoreManager.shared.addBookmark(with: uid, bookmarkId: id)
+                } else {
+                    FirebaseStoreManager.shared.removeBookmark(with: uid, bookmarkId: id)
+                }
+            }
+        })
+    }
 }
 

@@ -40,46 +40,23 @@ class NavigationViewController: UINavigationController {
 //MARK: - UINavigationControllerDelegate
 extension NavigationViewController : UINavigationControllerDelegate {
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController.isKind(of: TabbarViewController.self){
-            self.addSettingsBarbuttonItem(viewController)
+        
+        
+        if viewController.isKind(of: TabbarViewController.self) {
+            self.addSignOutBarbuttonItemToTabbarController()
         }
-        if viewController.isKind(of: SettingsViewController.self){
-            self.addDownBarbuttonItem(viewController)
+        self.navigationBar.isHidden = false
+        self.interactivePopGestureRecognizer?.isEnabled = false
+        if viewController.isKind(of: RocketDetailsViewController.self) {
+            self.navigationBar.isHidden = true
         }
+        
     }
-    
-    ///Adding settings barbutton item to Viewcontroller navigationItem
-    ///Using customeview to change to show custome color of icon
-    private func addSettingsBarbuttonItem(_ viewController : UIViewController) {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "settings"), for: .normal)
-        button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
-        button.tintColor = Constants.Colors.AppBlue
-        let barButton = UIBarButtonItem.init(customView: button)
-        viewController.navigationItem.rightBarButtonItem  = barButton
-    }
-    
-    ///Adding down barbutton item to Viewcontroller navigationItem
-    ///Using customeview to change to show custome color of icon
-    private func addDownBarbuttonItem(_ viewController : UIViewController) {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "downarrow"), for: .normal)
-        button.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
-        button.tintColor = Constants.Colors.AppBlue
-        let barButton = UIBarButtonItem.init(customView: button)
-        viewController.navigationItem.rightBarButtonItem  = barButton
-    }
-    
-    ///This method is to open settins viewcontroller
-    ///This action is from navigation barbutton item
-    @objc func settingsButtonAction() {
-        let vc = NavigationViewController.init(rootViewController: SettingsViewController.create())
-        self.present(vc, animated: true, completion: nil)
-    }
-    
+  
     ///This method is to dismiss the viewcontroller.
     ///This action is from navigation barbutton item
     @objc func closeButtonAction() {
         self.dismiss(animated: true, completion: nil)
     }
+    
 }

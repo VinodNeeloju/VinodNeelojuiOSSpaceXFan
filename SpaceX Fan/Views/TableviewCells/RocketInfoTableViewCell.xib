@@ -73,18 +73,18 @@
                     <constraint firstItem="pTs-pO-wDd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5yE-Ib-bTl"/>
                     <constraint firstItem="TTM-zc-NCQ" firstAttribute="trailing" secondItem="8Jp-xK-Abu" secondAttribute="trailing" id="7Ku-I2-Ohg"/>
                     <constraint firstAttribute="trailing" secondItem="9nh-qD-3CD" secondAttribute="trailing" constant="100" id="7hP-dl-C2P"/>
+                    <constraint firstItem="pTs-pO-wDd" firstAttribute="top" secondItem="9nh-qD-3CD" secondAttribute="top" id="AZu-DL-Ytt"/>
                     <constraint firstItem="TTM-zc-NCQ" firstAttribute="top" secondItem="8Jp-xK-Abu" secondAttribute="bottom" constant="5" id="Iae-0s-kAC"/>
+                    <constraint firstItem="9nh-qD-3CD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="JkF-HP-Kog"/>
                     <constraint firstAttribute="trailing" secondItem="mdB-aC-bIF" secondAttribute="trailing" constant="20" id="LXn-SK-HtR"/>
                     <constraint firstItem="8Jp-xK-Abu" firstAttribute="trailing" secondItem="9nh-qD-3CD" secondAttribute="trailing" id="NtS-A7-0zf"/>
                     <constraint firstItem="ifO-Pw-FCm" firstAttribute="centerY" secondItem="TTM-zc-NCQ" secondAttribute="centerY" id="RGU-C7-7ir"/>
                     <constraint firstItem="8Jp-xK-Abu" firstAttribute="top" secondItem="9nh-qD-3CD" secondAttribute="bottom" constant="5" id="Rny-kR-nwc"/>
-                    <constraint firstItem="9nh-qD-3CD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="USP-f6-6Yt"/>
                     <constraint firstAttribute="trailing" secondItem="ifO-Pw-FCm" secondAttribute="trailing" constant="20" id="dv7-lR-GAh"/>
                     <constraint firstItem="9nh-qD-3CD" firstAttribute="leading" secondItem="pTs-pO-wDd" secondAttribute="trailing" constant="10" id="hmz-eV-r2P"/>
                     <constraint firstAttribute="bottom" secondItem="mdB-aC-bIF" secondAttribute="bottom" id="j9X-g6-t2U"/>
                     <constraint firstItem="mdB-aC-bIF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="k5Q-hV-oDU"/>
                     <constraint firstItem="mdB-aC-bIF" firstAttribute="top" secondItem="TTM-zc-NCQ" secondAttribute="bottom" constant="20" id="mRV-Si-ueZ"/>
-                    <constraint firstItem="pTs-pO-wDd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="msO-Df-UJM"/>
                     <constraint firstItem="8Jp-xK-Abu" firstAttribute="leading" secondItem="9nh-qD-3CD" secondAttribute="leading" id="pTa-j0-iPD"/>
                     <constraint firstAttribute="trailing" secondItem="x6n-vR-qIk" secondAttribute="trailing" constant="10" id="vbz-Zf-t6e"/>
                     <constraint firstItem="x6n-vR-qIk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wGg-wB-JN2"/>
@@ -93,6 +93,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bookmarkButton" destination="x6n-vR-qIk" id="yB0-Ri-nDr"/>
                 <outlet property="flightNumberLabel" destination="8Jp-xK-Abu" id="ApE-et-Rwd"/>
                 <outlet property="imageViewWidthConstraint" destination="hD6-xT-A9m" id="WRS-Uj-kTU"/>
                 <outlet property="imageview" destination="pTs-pO-wDd" id="dxE-zJ-lKU"/>

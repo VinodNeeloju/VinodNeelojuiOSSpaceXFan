@@ -42,18 +42,21 @@ class TabbarViewController: UITabBarController {
 extension TabbarViewController : UITabBarControllerDelegate {
     ///This is method is too show the viewController or not. This method needs a return value of boolian.
     ///This will help us to check restict the screen for authentication...
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
         if viewController.isKind(of: FavoriteRocketsViewController.self) {
             ///Check if ther user is authorized user or not
-            self.checkIsUserAuthorized { (_ autherizedUser) in
+            let flag = self.checkIsUserAuthorized { (_ autherizedUser) in
                 if autherizedUser == true {
                     DispatchQueue.main.async {
                         self.selectedIndex = 1
                     }
                 }
             }
+            return flag
         }
+        FirebaseStoreManager.shared.fetchAllBookmarkIds(nil)
         return true
     }
 }

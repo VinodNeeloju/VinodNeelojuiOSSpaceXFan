@@ -69,5 +69,16 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.229283713626-ucifcjbpk255of9bttc4g5ie0cagmn3k</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol RocketInfoTableViewCellDelegate {
+    func bookmarkAction(with rocketResponse : RocketResponse, sender : UIButton)
+}
+
 class RocketInfoTableViewCell: UITableViewCell {
 
     //MARK : - IBOutlet
@@ -15,9 +19,12 @@ class RocketInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var flightNumberLabel: UILabel!
     @IBOutlet weak var upcomingStatusLabel: UILabel!
     @IBOutlet weak var launchStatusLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
+    
+    var delegate : RocketInfoTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,15 +74,18 @@ class RocketInfoTableViewCell: UITableViewCell {
             self.upcomingStatusLabel.text = ""
             self.launchStatusLabel.text = ""
         }
+        if let id = rocketResponse.id {
+            self.bookmarkButton.isSelected = FirebaseStoreManager.shared.isRocketFavorited(id: id)
+        } else {
+            self.bookmarkButton.isSelected = false
+        }
+        
     }
     
     //MARK: - IBAction
     @IBAction func bookmarkButtonAction(_ sender: UIButton) {
-        UIApplication.topViewController()?.checkIsUserAuthorized({ (_ autherizedUser) in
-            if autherizedUser == true {
-                sender.isSelected = !sender.isSelected
-            }
-        })
+        guard let rocketResponse = self.rocketResponse else { return  }
+        self.delegate?.bookmarkAction(with: rocketResponse, sender: sender)
     }
     
 }
