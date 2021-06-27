@@ -9,7 +9,7 @@ import Foundation
 
 class ServiceManager: NSObject {
     
-    
+    ///Method types of the Api request.
     enum MethodeType : String {
         case Get = "GET"
         case Post = "POST"
@@ -23,7 +23,8 @@ class ServiceManager: NSObject {
         case Success = 200
     }
     
-    
+    ///This method is to request the server to fetch the data of the perticualar server api
+    ///Used URLSession to comunicate the server
     static func request(with type : MethodeType, urlString : String, params : Dictionary<String, Any>? = nil, complation : ((_ status : Bool, _ message : String, _ responseObject : Data?) -> ())?) {
         
         guard let url = URL(string: urlString) else {

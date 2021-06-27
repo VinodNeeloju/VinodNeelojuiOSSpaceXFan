@@ -23,6 +23,7 @@ class SignInViewModel: NSObject {
         self.delegate = delegate
     }
     
+    ///SignIn user with email and password authenticating with firebase
     public func signInUser(with email : String?, and password : String?) {
         guard let email = email, email.isValidEmail == true else {
             self.delegate?.requestFailed(with: "Please enter valid email", failed: 1)
@@ -45,6 +46,7 @@ class SignInViewModel: NSObject {
         }
     }
     
+    ///Creating user with email and password authenticating with firebase
     public func createAccount(with name: String?, email: String?, password: String?, confirmPassword : String?) {
         guard let name = name else {
             self.delegate?.requestFailed(with: "Please enter name", failed: 1)
@@ -88,6 +90,8 @@ protocol SignInProtocal {
     /**Failure response from api request with reason failed field 1- name 2- email, 3- password, 4- re enter password 0 - common field*/
     func requestFailed(with reason : String?, failed field : Int)
     
+    ///Once alll the validations are successed and before goinng to hit the server this method will excute
+    ///This method is to show the loading bar to block the ui
     func requestingServer()
     
     

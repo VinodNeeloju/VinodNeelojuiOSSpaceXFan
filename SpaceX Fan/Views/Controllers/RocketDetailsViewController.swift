@@ -33,7 +33,10 @@ class RocketDetailsViewController: UIViewController {
         self.favoriteButton.isSelected = self.viewModel!.isFavourited
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.RocketDetails)
+    }
     /*
     // MARK: - Navigation
 

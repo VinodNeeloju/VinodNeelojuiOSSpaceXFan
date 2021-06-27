@@ -45,6 +45,7 @@ class UpcomingLaunchesViewModel: NSObject {
         }
     }
     
+    ///This is the notification observer to update the ui according to login status
     @objc func userSignedIn() {
         self.delegate?.gotTheResponse()
     }

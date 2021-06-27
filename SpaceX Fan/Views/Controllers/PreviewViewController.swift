@@ -40,6 +40,11 @@ class PreviewViewController: UIViewController {
     }
     
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.ImagePreview)
+    }
+    
     /*
     // MARK: - Navigation
 

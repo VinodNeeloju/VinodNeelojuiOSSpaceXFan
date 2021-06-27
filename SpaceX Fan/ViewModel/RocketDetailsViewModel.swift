@@ -17,7 +17,7 @@ class RocketDetailsViewModel: NSObject {
         self.delegate = delegate
         self.arrangeLinksList()
     }
-    
+    ///Arranging links to open it from app in safari
     private func arrangeLinksList() {
         var list = [[String : String]]()
         if let links = rocketResponse?.links {
@@ -42,11 +42,14 @@ class RocketDetailsViewModel: NSObject {
     
     public var linksList : [[String : String]]?
     
+    ///Checking the favorite status of the rocket with the firestore
     public var isFavourited : Bool {
         guard let id = rocketResponse?.id else { return false }
         return FirebaseStoreManager.shared.isRocketFavorited(id: id)
     }
     
+    ///Favoriting the rocket
+    ///Storing/Deleting the rocket id from firebase firestore from bookmarks
     public func favoriteRocket() {
         if let id = rocketResponse?.id {
             if FirebaseStoreManager.shared.isRocketFavorited(id: id) == true {
@@ -59,6 +62,8 @@ class RocketDetailsViewModel: NSObject {
         }
     }
     
+    ///This method is to favorite the rocket.
+    ///Sending rocket id to firebase firestore and storing it in bookmarks
     fileprivate func favorite() {
         if let uid = FirebaseAuthenticationManager.shared.user?.uid, let id = rocketResponse?.id {
             FirebaseStoreManager.shared.addBookmark(with: uid, bookmarkId: id)
@@ -66,6 +71,8 @@ class RocketDetailsViewModel: NSObject {
         }
     }
     
+    ///This method is to unfavorite the rocket.
+    ///Sending rocket id to firebase firestore and deleting it from bookmarks
     fileprivate func unFavorite() {
         if let uid = FirebaseAuthenticationManager.shared.user?.uid, let id = rocketResponse?.id {
             FirebaseStoreManager.shared.removeBookmark(with: uid, bookmarkId: id)

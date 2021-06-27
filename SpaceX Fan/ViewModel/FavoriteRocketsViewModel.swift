@@ -27,7 +27,7 @@ class FavoriteRocketsViewModel: NSObject {
     public var favouritesList : [RocketResponse]?
     private var bookmarkRocketsIds : [String]?
     
-    
+    ///This method is to fetch the favorite lists from firestore
     private func fetchBookmarksIdsList() {
         guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         FirebaseStoreManager.shared.fetchAllBookmarkIds { (_ status, _ bookmarkIds, _ errorMessage) in
@@ -36,6 +36,7 @@ class FavoriteRocketsViewModel: NSObject {
         }
     }
     
+    ///This method is to fetch all the favorite rockets list
     public func fetchAllFavoriteRocketsList() {
         guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         self.fetchBookmarksIdsList()
@@ -47,6 +48,8 @@ class FavoriteRocketsViewModel: NSObject {
         }
     }
     
+    ///This is to arrange favorites data
+    ///Fetching the Ids and Total list of rocktes and filtering to get the favorited list of rockets
     private func arrangeFavouritesData() {
         guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         if let ids = self.bookmarkRocketsIds, let rocketsList = self.rocketsList {
@@ -56,6 +59,7 @@ class FavoriteRocketsViewModel: NSObject {
         }
     }
     
+    ///Fetching the index of the object from favorite list
     public func indexOfObject(_ rocketResponse : RocketResponse) -> Int? {
         if let index = self.favouritesList!.firstIndex(where: { $0.id == rocketResponse.id } ) {
             return index
@@ -63,6 +67,7 @@ class FavoriteRocketsViewModel: NSObject {
         return 0
     }
     
+    ///This is to remove rocket from favorite list
     public func removeRocketFromFavoriteList(with indexPath : IndexPath, _ complation : (() -> ())?) {
         if let rocketResponse = favouritesList?[indexPath.row] {
             if let uid = FirebaseAuthenticationManager.shared.user?.uid, let id = rocketResponse.id {

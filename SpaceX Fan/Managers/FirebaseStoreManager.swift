@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class FirebaseStoreManager: NSObject {
     
+    ///Collection paths of the firebase firestore
     struct Collections {
         static var rootCollection : String {
             return Constants.Apis.isLive == true ? live : dev
@@ -27,9 +28,14 @@ class FirebaseStoreManager: NSObject {
             return rootCollection + "/\(Documents.users)/\(userslist)/\(userId)/"
         }
     }
+
+    ///Document paths of the firebase firestore
     struct Documents {
         static let users = "users"
     }
+    
+    ///User keys of user document
+    ///We can store the user info in firestore by using this keys i
     struct UserDetailsKeys {
         static let email = "email"
         static let name = "name"
@@ -48,16 +54,14 @@ class FirebaseStoreManager: NSObject {
     private let firebaseDB = Firestore.firestore()
     private var bookmarkIds : [String]?
     
-    public func fetchUserInfo() {
-        
-    }
-    
+    ///This  is to check the specifict rocket is bookmarked or not in firebase firestore
     public func isRocketFavorited(id : String) -> Bool {
         guard FirebaseAuthenticationManager.shared.isUserExist == true else { return false }
         guard let bookmarkIds = self.bookmarkIds else { return false }
         return bookmarkIds.contains(id)
     }
     
+    ///This method is to fetch all the bookmark ids which are stored in firebase firestore
     public func fetchAllBookmarkIds(_ complation : ((_ status : Bool?, _ bookmarkIds  :[String]?, _ errorMessage : String?) -> ())?) {
         guard let userId = FirebaseAuthenticationManager.shared.user?.uid else {
             complation?(false, nil, "Login to access this feature")
@@ -92,15 +96,23 @@ class FirebaseStoreManager: NSObject {
         firebaseDB.collection(Collections.rootCollection).document(Documents.users).collection(Collections.userslist).addDocument(data: data)
     }
     
+    ///Add bookmark
+    ///This is to add the document id (bookmark id) in the firestore
     public func addBookmark(with userid : String, bookmarkId : String) {
         self.bookmarkIds?.append(bookmarkId)
         firebaseDB.collection(Collections.bookmarksPath(userId: userid)).document(bookmarkId).setData(["bookmarked" : true])
+        FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Favorite)
     }
+    
+    ///Removing bookmark
+    ///This is to delete the document id (bookmark id) from the firestore
     public func removeBookmark(with userid : String, bookmarkId : String) {
         self.bookmarkIds = self.bookmarkIds?.filter { $0 != bookmarkId }
         firebaseDB.collection(Collections.bookmarksPath(userId: userid)).document(bookmarkId).delete()
+        FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Unfavorite)
     }
 
+    ///This method is to clear local data i.e, bookmarksIs which are stored in bookmarkIds object.
     func clearLocalStoreData() {
         self.bookmarkIds = nil
     }

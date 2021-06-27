@@ -14,6 +14,7 @@ class AuthenticateOptionsViewController: UIViewController {
         vc.modalPresentationStyle = .custom
         return vc
     }
+    
     //MARK: IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var signInButton: UIButton!

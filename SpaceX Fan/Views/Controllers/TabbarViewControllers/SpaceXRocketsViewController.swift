@@ -32,6 +32,7 @@ class SpaceXRocketsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.AllRockets)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

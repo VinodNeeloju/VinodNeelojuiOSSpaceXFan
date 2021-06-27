@@ -116,6 +116,10 @@ extension UIView {
     }
     
     
+    
+    ///Adding the gradient to the UIView
+    ///Need size of the view and colors that are going to apply on the layer of the view
+    ///This method will add a layer in uiview layer
     func addGradient(_ size : CGSize, _ colors : [CGColor] = [
         UIColor(red:0.25, green:0.37, blue:0.54, alpha:1).cgColor,
         UIColor(red:0.12, green:0.19, blue:0.32, alpha:0).cgColor

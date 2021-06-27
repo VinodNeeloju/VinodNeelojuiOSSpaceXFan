@@ -43,6 +43,8 @@ class RocketInfoTableViewCell: UITableViewCell {
             self.setValues()
         }
     }
+    
+    ///This method is to show the UI with appropreate data of rocket
     private func setValues() {
         guard let rocketResponse = rocketResponse else { return }
         

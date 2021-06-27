@@ -15,9 +15,12 @@ class LoadingViewController: UIViewController {
         return vc
     }
     
+    //MARK: -IBOutlet
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
     private var isShowing : Bool = false
     
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,8 +40,9 @@ class LoadingViewController: UIViewController {
     */
 }
 
-
+//MARK - Show/Hide
 extension LoadingViewController {
+    ///This is to show the present and show the loading bar with animation
     func showLoader() {
         if isShowing { return }
         DispatchQueue.main.async {
@@ -48,6 +52,7 @@ extension LoadingViewController {
         }
     }
     
+    ///This method is to dismiss the loading view if it is already presented
     func dismissLoader(completion: (() -> ())?) {
         if !isShowing { return }
         DispatchQueue.main.async {

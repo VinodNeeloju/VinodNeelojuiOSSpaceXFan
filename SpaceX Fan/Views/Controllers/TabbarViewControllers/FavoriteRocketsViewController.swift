@@ -11,15 +11,18 @@ class FavoriteRocketsViewController: UIViewController {
 
     /// create() will create the instace of the class and returns the storyboard instance of the class.
     
-    @IBOutlet weak var tableView: UITableView!
     
     static func create() -> FavoriteRocketsViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FavoriteRocketsViewController") as! FavoriteRocketsViewController
         return vc
     }
     
+    //MARK: - IBOutlet
+    @IBOutlet weak var tableView: UITableView!
+    
     private var viewModel : FavoriteRocketsViewModel?
     
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,12 +34,13 @@ class FavoriteRocketsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.FavoriteRockets)
         viewModel?.fetchAllFavoriteRocketsList()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-
+   
     
     /*
     // MARK: - Navigation
@@ -124,6 +128,8 @@ extension FavoriteRocketsViewController : RocketInfoTableViewCellDelegate{
 }
 
 extension FavoriteRocketsViewController  {
+    
+    ///This method is to show the conformation popup to remove favorite from the list
     private func showUnfavoriteConfirmationPopup(with indexPath : IndexPath) {
         guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         guard let name = self.viewModel?.favouritesList?[indexPath.row].name else { return }

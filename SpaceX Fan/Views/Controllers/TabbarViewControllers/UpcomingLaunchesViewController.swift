@@ -33,10 +33,13 @@ class UpcomingLaunchesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.UpcomingRockets)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+    
+
     
     /*
      // MARK: - Navigation

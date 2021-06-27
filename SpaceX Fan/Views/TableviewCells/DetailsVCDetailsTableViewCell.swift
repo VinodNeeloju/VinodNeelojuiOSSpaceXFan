@@ -9,6 +9,7 @@ import UIKit
 
 class DetailsVCDetailsTableViewCell: UITableViewCell {
 
+    //MARK: - IBOutlet
     @IBOutlet weak var detailsLabel: UILabel!
     
     
@@ -23,6 +24,7 @@ class DetailsVCDetailsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    ///RocketResponse to show the detail text of the rocket
     public var rocketResponse : RocketResponse? {
         didSet {
             self.detailsLabel.text = rocketResponse?.details

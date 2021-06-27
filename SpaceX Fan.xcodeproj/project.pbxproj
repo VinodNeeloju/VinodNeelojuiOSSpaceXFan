@@ -15,6 +15,7 @@
 		3F15E96C268322A30024CEC3 /* Failures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E96B268322A30024CEC3 /* Failures.swift */; };
 		3F15E96F2683258E0024CEC3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E96E2683258E0024CEC3 /* UIColor+Extension.swift */; };
 		3F15E973268329460024CEC3 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E972268329460024CEC3 /* NavigationViewController.swift */; };
+		3F2CD71A26889AE200BA3346 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CD71926889AE200BA3346 /* FirebaseAnalytics.swift */; };
 		3F44ADE12686E6FF004217E4 /* FirebaseStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */; };
 		3F44ADFF26876978004217E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F44ADFE26876978004217E4 /* GoogleService-Info.plist */; };
 		3F4D73052688576A00DF72EB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D73042688576A00DF72EB /* PreviewViewController.swift */; };
@@ -69,6 +70,7 @@
 		3F15E96B268322A30024CEC3 /* Failures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failures.swift; sourceTree = "<group>"; };
 		3F15E96E2683258E0024CEC3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3F15E972268329460024CEC3 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		3F2CD71926889AE200BA3346 /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
 		3F37678E26839AD80069E7E9 /* SpaceX Fan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceX Fan-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoreManager.swift; sourceTree = "<group>"; };
 		3F44ADFE26876978004217E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				3F838AB726856FF6007B77C0 /* FirebaseAuthenticationManager.swift */,
 				3F838ABA26857A3D007B77C0 /* LocalAuthenticationManager.swift */,
 				3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */,
+				3F2CD71926889AE200BA3346 /* FirebaseAnalytics.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				3F69059B2682D4570065022C /* SpaceX_Fan.xcdatamodeld in Sources */,
 				3F6905D82682E1470065022C /* Reddit.swift in Sources */,
 				3F838AB826856FF6007B77C0 /* FirebaseAuthenticationManager.swift in Sources */,
+				3F2CD71A26889AE200BA3346 /* FirebaseAnalytics.swift in Sources */,
 				3F6905C32682DBD90065022C /* FavoriteRocketsViewModel.swift in Sources */,
 				3FA1B2C42687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift in Sources */,
 				3F6905D42682E1470065022C /* Links.swift in Sources */,

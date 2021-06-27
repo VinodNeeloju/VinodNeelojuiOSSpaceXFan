@@ -9,10 +9,14 @@ import UIKit
 
 class Constants: NSObject {
 
+    ///This is a shortcut to access the keywindow to perform some specific operations
     static let KeyWindow = UIApplication.shared.keyWindow
     
+    ///This is a shortcut to access the loading view controllr to show/ hide it.
     static let Loader = LoadingViewController.create()
     
+    ///Api endpoints of the app
+    ///All end points we can see here which are used in the app
     struct Apis {
         
         static var isLive : Bool {
@@ -25,6 +29,7 @@ class Constants: NSObject {
         
     }
     
+    ///Bounds of the UIScreen to keep it handy
     struct Bounds {
         static let size = UIScreen.main.bounds.size
         static let height = UIScreen.main.bounds.height
@@ -33,6 +38,7 @@ class Constants: NSObject {
         static let tabbarHeight : CGFloat = 49.0
     }
     
+    ///Static colors used in the app
     struct Colors {
         static let Green = UIColor.init(hexString: "#039640", alpha: 1)
         static let Red = UIColor.init(hexString: "#d13b3b", alpha: 1)
@@ -46,6 +52,7 @@ class Constants: NSObject {
         }
     }
     
+    ///Names of the wesite links which we are using in detail screen
     struct WebsiteLinks {
         static let Youtube = "Youtube"
         static let Launch = "Launch"

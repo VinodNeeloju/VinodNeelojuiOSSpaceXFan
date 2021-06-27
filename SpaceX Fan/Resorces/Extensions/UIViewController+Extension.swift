@@ -84,7 +84,7 @@ extension UIViewController {
         UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
       }
     
-    
+    ///This method is to remove signout button from Navigation bar
     private func removeSignoutButton() {
         guard let viewController = UIApplication.topViewController() else { return }
         let tabbarController = viewController.tabBarController

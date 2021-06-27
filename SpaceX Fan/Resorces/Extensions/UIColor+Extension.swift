@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIColor {
+    
+    ///Converting hexastring to color
     public convenience init?(hexString: String, alpha: CGFloat = 1.0) {
         var formatted = hexString.replacingOccurrences(of: "0x", with: "")
         formatted = formatted.replacingOccurrences(of: "#", with: "")

@@ -9,7 +9,9 @@ import UIKit
 
 class DetailsVCInternalLinksTableViewCell: UITableViewCell {
 
+    //MARK: - IBOutlet
     @IBOutlet weak var button: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +23,7 @@ class DetailsVCInternalLinksTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    ///Welink Object to show which link it is... ex: Youtube
     public var webLinkObject : [String : String]? {
         didSet {
             var color : UIColor?
@@ -46,9 +49,26 @@ class DetailsVCInternalLinksTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - IBAction
+    ///Button action of links
     @IBAction func buttonaction(_ sender: Any) {
         guard let value = webLinkObject?.values.first, let url = URL(string: value) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        guard let key = webLinkObject?.keys.first else { return }
+        switch key {
+        case Constants.WebsiteLinks.Youtube:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Youtube)
+        case Constants.WebsiteLinks.Article:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Artical)
+        case Constants.WebsiteLinks.Launch:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Launch)
+        case Constants.WebsiteLinks.Webcast:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.WebCast)
+        case Constants.WebsiteLinks.Wikipedia:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Wikipedia)
+        default:
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.Wikipedia)
+        }
     }
     
 }

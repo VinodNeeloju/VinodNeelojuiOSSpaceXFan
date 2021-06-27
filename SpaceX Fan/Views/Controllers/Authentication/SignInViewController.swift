@@ -31,6 +31,10 @@ class SignInViewController: UIViewController {
         viewModel = SignInViewModel.init(with: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        FirebaseAnalytics.logScreen(name: FirebaseAnalytics.ScreenNames.SignIn)
+    }
 
     /*
     // MARK: - Navigation
@@ -79,5 +83,6 @@ extension SignInViewController : SignInProtocal {
     func requestingServer() {
         ///Show loader to block the ui after getting the success response or failure response dismiss the Loader...
         Constants.Loader.showLoader()
+        FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.SignIn)
     }
 }

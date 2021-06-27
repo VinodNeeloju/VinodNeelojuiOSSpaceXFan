@@ -9,6 +9,7 @@ import UIKit
 
 class DetailsVCFlightDetailsTableViewCell: UITableViewCell {
 
+    //MARK: - IBOutlet
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var rocketImageView: UIImageView!
     @IBOutlet weak var eventTypeLabel: UILabel!
@@ -16,12 +17,14 @@ class DetailsVCFlightDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var launchStatusLabel: UILabel!
     
+    ///This object is to set the the data
     public var rocketResponse : RocketResponse? {
         didSet {
             self.setData()
         }
     }
     
+    ///This method is to set all the data of the rocket to show the info...
     private func setData() {
         if let imageString = rocketResponse?.links?.patch?.small, let url = URL(string: imageString) {
             self.rocketImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "rocket"), options: .handleCookies) { (_ image, _, _, _) in
@@ -48,10 +51,6 @@ class DetailsVCFlightDetailsTableViewCell: UITableViewCell {
             self.eventTypeLabel.text = ""
             self.launchStatusLabel.text = ""
         }
-        
-        
-        
-        
     }
     
     override func awakeFromNib() {

@@ -8,6 +8,8 @@
 import Foundation
 
 extension UIApplication {
+    
+    ///by using this method we can fetch the presented top most view controller.
     public class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topViewController(nav.visibleViewController)

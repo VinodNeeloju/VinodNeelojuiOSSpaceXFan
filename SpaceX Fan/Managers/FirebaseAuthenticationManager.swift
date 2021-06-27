@@ -87,6 +87,7 @@ class FirebaseAuthenticationManager: NSObject {
             try firebaseAuth.signOut()
             LocalAuthenticationManager.shared.isUserAuthenticated = false
             FirebaseStoreManager.shared.clearLocalStoreData()
+            FirebaseAnalytics.logEvent(event: FirebaseAnalytics.EventName.SignOut)
         } catch let signOutError as NSError {
             print("signout error:\(signOutError)")
         }
