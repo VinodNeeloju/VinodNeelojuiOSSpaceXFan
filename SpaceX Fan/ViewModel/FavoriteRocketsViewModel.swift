@@ -27,10 +27,9 @@ class FavoriteRocketsViewModel: NSObject {
     public var favouritesList : [RocketResponse]?
     private var bookmarkRocketsIds : [String]?
     
-    private var firebaseListFlag : Bool = false
-    private var rocketsListFlag : Bool = false
     
     private func fetchBookmarksIdsList() {
+        guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         FirebaseStoreManager.shared.fetchAllBookmarkIds { (_ status, _ bookmarkIds, _ errorMessage) in
             self.bookmarkRocketsIds = bookmarkIds ?? [""]
             self.arrangeFavouritesData()
@@ -38,6 +37,7 @@ class FavoriteRocketsViewModel: NSObject {
     }
     
     public func fetchAllFavoriteRocketsList() {
+        guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         self.fetchBookmarksIdsList()
         if self.rocketsList == nil {
             DataRepositoryManager.fetchSpaceXRocketsList { (_ status, _ rocketResponses, _ errorMessage) in
@@ -48,6 +48,7 @@ class FavoriteRocketsViewModel: NSObject {
     }
     
     private func arrangeFavouritesData() {
+        guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
         if let ids = self.bookmarkRocketsIds, let rocketsList = self.rocketsList {
             let filterList = rocketsList.filter { ids.contains($0.id ?? "") }
             self.favouritesList = filterList

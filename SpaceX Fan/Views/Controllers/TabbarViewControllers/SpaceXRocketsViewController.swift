@@ -27,6 +27,7 @@ class SpaceXRocketsViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.register(UINib.init(nibName: String(describing: RocketInfoTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: RocketInfoTableViewCell.self))
         viewModel = SpaceXRocketsViewModel.init(with: self)
+        Constants.Loader.showLoader()
         viewModel?.fetchRocketsList()
     }
     
@@ -51,18 +52,27 @@ class SpaceXRocketsViewController: UIViewController {
 
 // MARK: - SpaceXRocketsProtocal
 extension SpaceXRocketsViewController : SpaceXRocketsProtocal {
+    
     func gotTheResponse() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        Constants.Loader.dismissLoader {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            if self.viewModel?.rocketsList?.count ?? 0 == 0 {
+                Constants.KeyWindow?.makeToast("Rockets list is empty")
+            }
         }
     }
     
     func requestFailed(with reason: String?) {
-        print(reason ?? "")
-        if reason != nil {
-            Constants.KeyWindow?.makeToast(reason!)
+        Constants.Loader.dismissLoader {
+            print(reason ?? "")
+            if reason != nil {
+                Constants.KeyWindow?.makeToast(reason!)
+            }
         }
     }
+    
 }
  
 // MARK: - UITableViewDataSource, UITableViewDelegate

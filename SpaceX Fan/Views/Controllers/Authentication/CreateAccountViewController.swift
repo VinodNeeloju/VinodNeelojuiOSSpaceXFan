@@ -31,6 +31,7 @@ class CreateAccountViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         viewModel = SignInViewModel.init(with: self)
+        
     }
     
 
@@ -56,6 +57,11 @@ class CreateAccountViewController: UIViewController {
 
 //MARK: - SignInViewController
 extension CreateAccountViewController : SignInProtocal {
+    func requestingServer() {
+        ///Show loader to block the ui after getting the success response or failure response dismiss the Loader...
+        Constants.Loader.showLoader()
+    }
+    
     func gotTheSuccessResponse() {
         //SignIn successfull close the signin screen and go to the home screen
         Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -64,15 +70,20 @@ extension CreateAccountViewController : SignInProtocal {
     func requestFailed(with reason: String?, failed field: Int) {
         switch field {
         case 1:
-            emailTextField.shake()
+            nameTextField.shake()
         case 2:
-            passwordTextField.shake()
+            emailTextField.shake()
         case 3:
+            passwordTextField.shake()
+        case 4:
             confirmPasswordTextField.shake()
         default:
+            ///Dismissing the loader... The loader already presented on the api request
+            Constants.Loader.dismissLoader(completion: nil)
             break
         }
         Constants.KeyWindow?.makeToast(reason ?? "Something went wrong please try again")
     }
+    
     
 }

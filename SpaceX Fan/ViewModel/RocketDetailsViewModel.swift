@@ -15,7 +15,32 @@ class RocketDetailsViewModel: NSObject {
     
     public func setDelegate(_ delegate : RocketDetailsProtocal) {
         self.delegate = delegate
+        self.arrangeLinksList()
     }
+    
+    private func arrangeLinksList() {
+        var list = [[String : String]]()
+        if let links = rocketResponse?.links {
+            if let id = links.youtube_id {
+                list.append([Constants.WebsiteLinks.Youtube : "https://www.youtube.com/watch?v=\(id)"])
+            }
+            if let id = links.reddit?.launch {
+                list.append([Constants.WebsiteLinks.Launch : id])
+            }
+            if let id = links.wikipedia {
+                list.append([Constants.WebsiteLinks.Wikipedia : id])
+            }
+            if let id = links.webcast {
+                list.append([Constants.WebsiteLinks.Webcast : id])
+            }
+            if let id = links.article {
+                list.append([Constants.WebsiteLinks.Article : id])
+            }
+        }
+        self.linksList = list
+    }
+    
+    public var linksList : [[String : String]]?
     
     public var isFavourited : Bool {
         guard let id = rocketResponse?.id else { return false }

@@ -17,6 +17,10 @@
 		3F15E973268329460024CEC3 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E972268329460024CEC3 /* NavigationViewController.swift */; };
 		3F44ADE12686E6FF004217E4 /* FirebaseStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */; };
 		3F44ADFF26876978004217E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F44ADFE26876978004217E4 /* GoogleService-Info.plist */; };
+		3F4D73052688576A00DF72EB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D73042688576A00DF72EB /* PreviewViewController.swift */; };
+		3F4D73082688580E00DF72EB /* PreviewImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D73072688580E00DF72EB /* PreviewImageCollectionViewCell.swift */; };
+		3F4D730B268858B400DF72EB /* PreviewImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D730A268858B400DF72EB /* PreviewImageViewModel.swift */; };
+		3F4D730E2688612600DF72EB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D730D2688612600DF72EB /* LoadingViewController.swift */; };
 		3F6905912682D4570065022C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905902682D4570065022C /* AppDelegate.swift */; };
 		3F6905932682D4570065022C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6905922682D4570065022C /* SceneDelegate.swift */; };
 		3F6905982682D4570065022C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6905962682D4570065022C /* Main.storyboard */; };
@@ -68,6 +72,10 @@
 		3F37678E26839AD80069E7E9 /* SpaceX Fan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceX Fan-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F44ADE02686E6FF004217E4 /* FirebaseStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoreManager.swift; sourceTree = "<group>"; };
 		3F44ADFE26876978004217E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F4D73042688576A00DF72EB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		3F4D73072688580E00DF72EB /* PreviewImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		3F4D730A268858B400DF72EB /* PreviewImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageViewModel.swift; sourceTree = "<group>"; };
+		3F4D730D2688612600DF72EB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		3F69058D2682D4570065022C /* SpaceX Fan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceX Fan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6905902682D4570065022C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6905922682D4570065022C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +175,8 @@
 				3F15E972268329460024CEC3 /* NavigationViewController.swift */,
 				3F6905BC2682D80D0065022C /* TabbarViewController.swift */,
 				3FF239552687A487003ED96A /* RocketDetailsViewController.swift */,
+				3F4D73042688576A00DF72EB /* PreviewViewController.swift */,
+				3F4D730D2688612600DF72EB /* LoadingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 				3F6905C52682DBED0065022C /* UpcomingLaunchesViewModel.swift */,
 				3F838AD526863249007B77C0 /* SignInViewModel.swift */,
 				3FF239582687A4B2003ED96A /* RocketDetailsViewModel.swift */,
+				3F4D730A268858B400DF72EB /* PreviewImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -292,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA1B2C32687BA5F0072B63A /* DetailVCImageCollectionViewCell.swift */,
+				3F4D73072688580E00DF72EB /* PreviewImageCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -432,11 +444,15 @@
 				3F6905C62682DBED0065022C /* UpcomingLaunchesViewModel.swift in Sources */,
 				3F6905D92682E1470065022C /* Flickr.swift in Sources */,
 				3F6905D72682E1470065022C /* Fairings.swift in Sources */,
+				3F4D73082688580E00DF72EB /* PreviewImageCollectionViewCell.swift in Sources */,
 				3FF239592687A4B2003ED96A /* RocketDetailsViewModel.swift in Sources */,
+				3F4D730E2688612600DF72EB /* LoadingViewController.swift in Sources */,
 				3F6905D52682E1470065022C /* Cores.swift in Sources */,
 				3F6905BA2682D7FA0065022C /* UpcomingLaunchesViewController.swift in Sources */,
 				3F838ABB26857A3D007B77C0 /* LocalAuthenticationManager.swift in Sources */,
+				3F4D73052688576A00DF72EB /* PreviewViewController.swift in Sources */,
 				3F15E95E26830B8C0024CEC3 /* RocketInfoTableViewCell.swift in Sources */,
+				3F4D730B268858B400DF72EB /* PreviewImageViewModel.swift in Sources */,
 				3FA1B2C02687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift in Sources */,
 				3F838AF926865518007B77C0 /* UIApplication+Extension.swift in Sources */,
 				3F15E968268315140024CEC3 /* String+Extension.swift in Sources */,

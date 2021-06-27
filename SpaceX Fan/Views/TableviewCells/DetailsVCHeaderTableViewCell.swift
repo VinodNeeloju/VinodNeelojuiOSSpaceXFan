@@ -7,13 +7,18 @@
 
 import UIKit
 
+protocol DetailsVCHeaderTableViewDelegate {
+    func imagePressed(index : Int, imagesList : [String])
+}
+
 class DetailsVCHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pageController: UIPageControl!
     
-    var timer : Timer?
+    private var timer : Timer?
+    public var delegate : DetailsVCHeaderTableViewDelegate?
     
     public var rocketResponse : RocketResponse? {
         didSet {
@@ -73,6 +78,10 @@ extension DetailsVCHeaderTableViewCell : UICollectionViewDataSource, UICollectio
         cell.imageString = imageURLString
         cell.rocketImageView.addGradient(self.frame.size, [Constants.Colors.AppBlue!.cgColor, UIColor.clear.cgColor,  UIColor.clear.cgColor])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.imagePressed(index: indexPath.row, imagesList: self.flickrImages!)
     }
 }
 

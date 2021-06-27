@@ -32,6 +32,9 @@ class FavoriteRocketsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.fetchAllFavoriteRocketsList()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     
@@ -49,13 +52,17 @@ class FavoriteRocketsViewController: UIViewController {
 //MARK: - FavouriteRocketsProtocal
 extension FavoriteRocketsViewController : FavouriteRocketsProtocal {
     func gotTheResponse() {
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+        if self.viewModel?.favouritesList?.count ?? 0 == 0 {
+            Constants.KeyWindow?.makeToast("Your favorite list is empty")
         }
     }
     
     func requestFailed(with reason: String?) {
-        
+        Constants.KeyWindow?.makeToast(reason ?? "Something went wrong")
     }
 
 }
@@ -82,9 +89,7 @@ extension FavoriteRocketsViewController : UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.viewModel?.removeRocketFromFavoriteList(with: indexPath) {
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            self.showUnfavoriteConfirmationPopup(with: indexPath)
         }
     }
     
@@ -102,6 +107,10 @@ extension FavoriteRocketsViewController : UITableViewDataSource, UITableViewDele
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Remove"
+    }
 }
 
 
@@ -111,6 +120,29 @@ extension FavoriteRocketsViewController : RocketInfoTableViewCellDelegate{
         if let index = self.viewModel?.indexOfObject(rocketResponse) {
             self.tableView(self.tableView, commit: .delete, forRowAt: IndexPath(row: index, section: 0))
         }
+    }
+}
+
+extension FavoriteRocketsViewController  {
+    private func showUnfavoriteConfirmationPopup(with indexPath : IndexPath) {
+        guard FirebaseAuthenticationManager.shared.isUserExist == true else { return }
+        guard let name = self.viewModel?.favouritesList?[indexPath.row].name else { return }
+        let alertController = UIAlertController.init(title: "Unfavorite?", message: "Are you sure do you want to remove '\(name)' from favorites list?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_ alert) in
+            self.viewModel?.removeRocketFromFavoriteList(with: indexPath) {
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (_ alert) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        alertController.view.tintColor = UIColor.black
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        }
+        UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
     }
 }
 

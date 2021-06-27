@@ -28,6 +28,7 @@ class UpcomingLaunchesViewController: UIViewController {
         
         self.tableView.register(UINib.init(nibName: String(describing: RocketInfoTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: RocketInfoTableViewCell.self))
         viewModel = UpcomingLaunchesViewModel.init(with: self)
+        Constants.Loader.showLoader()
         viewModel?.fetchRocketsList()
     }
     
@@ -53,15 +54,22 @@ class UpcomingLaunchesViewController: UIViewController {
 // MARK: - SpaceXRocketsProtocal
 extension UpcomingLaunchesViewController : UpcomingLaunchesProtocal {
     func gotTheResponse() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        Constants.Loader.dismissLoader {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            if self.viewModel?.rocketsList?.count ?? 0 == 0 {
+                Constants.KeyWindow?.makeToast("Looks like there is no upcoming rockets events.")
+            }
         }
     }
     
     func requestFailed(with reason: String?) {
-        print(reason ?? "")
-        if reason != nil {
-            Constants.KeyWindow?.makeToast(reason!)
+        Constants.Loader.dismissLoader {
+            print(reason ?? "")
+            if reason != nil {
+                Constants.KeyWindow?.makeToast(reason!)
+            }
         }
     }
 }

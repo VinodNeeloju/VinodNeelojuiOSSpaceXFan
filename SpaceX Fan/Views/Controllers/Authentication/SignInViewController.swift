@@ -56,8 +56,10 @@ class SignInViewController: UIViewController {
 extension SignInViewController : SignInProtocal {
     func gotTheSuccessResponse() {
         //SignIn successfull close the signin screen and go to the home screen
-        Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
-        self.addSignOutBarbuttonItemToTabbarController()
+        Constants.Loader.dismissLoader {
+            Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.addSignOutBarbuttonItemToTabbarController()
+        }
     }
     
     func requestFailed(with reason: String?, failed field: Int) {
@@ -67,10 +69,15 @@ extension SignInViewController : SignInProtocal {
         case 2:
             passwordTextField.shake()
         default:
+            ///Dismissing the loader... The loader already presented on the api request
+            Constants.Loader.dismissLoader(completion: nil)
             break
         }
         Constants.KeyWindow?.makeToast(reason ?? "Something went wrong please try again")
     }
     
-    
+    func requestingServer() {
+        ///Show loader to block the ui after getting the success response or failure response dismiss the Loader...
+        Constants.Loader.showLoader()
+    }
 }

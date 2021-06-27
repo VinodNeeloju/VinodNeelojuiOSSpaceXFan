@@ -49,7 +49,11 @@ class RocketDetailsViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        self.viewModel?.favoriteRocket()
+        _ =  UIApplication.topViewController()?.checkIsUserAuthorized({ (_ autherizedUser) in
+            if autherizedUser == true {
+                self.viewModel?.favoriteRocket()
+            }
+        })
     }
 }
 
@@ -65,13 +69,14 @@ extension RocketDetailsViewController : RocketDetailsProtocal {
 //MARK: - UITableViewDataSource, UITableViewDelegate
 extension RocketDetailsViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 3 + (self.viewModel?.linksList?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsVCHeaderTableViewCell") as! DetailsVCHeaderTableViewCell
             cell.rocketResponse = self.viewModel?.rocketResponse
+            cell.delegate = self
             return cell
         }
         else if indexPath.row == 1 {
@@ -79,19 +84,38 @@ extension RocketDetailsViewController : UITableViewDataSource, UITableViewDelega
             cell.rocketResponse = self.viewModel?.rocketResponse
             return cell
             
-        } else {
+        } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsVCDetailsTableViewCell") as! DetailsVCDetailsTableViewCell
             cell.rocketResponse = self.viewModel?.rocketResponse
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsVCInternalLinksTableViewCell") as! DetailsVCInternalLinksTableViewCell
+            guard let object = self.viewModel?.linksList?[indexPath.row - 3] else { return cell }
+            cell.webLinkObject = object
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return Constants.Bounds.width
+            let count = self.viewModel?.rocketResponse?.links?.flickr?.original?.count ?? 0
+            return count > 0 ? Constants.Bounds.width : 150
         } else {
             return UITableView.automaticDimension
         }
     }
     
+}
+
+extension RocketDetailsViewController : DetailsVCHeaderTableViewDelegate {
+    func imagePressed(index: Int, imagesList: [String]) {
+        DispatchQueue.main.async {
+            let viewController = PreviewViewController.create()
+            let vm = PreviewImageViewModel()
+            vm.imagesList = imagesList
+            vm.selectedIndex = index
+            viewController.viewModel = vm
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
 }
