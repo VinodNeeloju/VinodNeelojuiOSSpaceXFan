@@ -21,6 +21,7 @@ class FavoriteRocketsViewModel: NSObject {
     init(with delegate : FavouriteRocketsProtocal) {
         super.init()
         self.delegate = delegate
+        NotificationCenter.default.addObserver(self, selector: #selector(userSignedIn), name: NSNotification.Name(rawValue: "userSignedIn"), object: nil)
     }
     
     private var rocketsList : [RocketResponse]?
@@ -78,6 +79,11 @@ class FavoriteRocketsViewModel: NSObject {
         } else {
             complation?()
         }
+    }
+    
+    ///This is the notification observer to update the ui according to login status
+    @objc func userSignedIn() {
+        self.delegate?.gotTheResponse()
     }
 }
 

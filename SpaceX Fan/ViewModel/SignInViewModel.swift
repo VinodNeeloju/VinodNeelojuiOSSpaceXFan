@@ -29,7 +29,7 @@ class SignInViewModel: NSObject {
             self.delegate?.requestFailed(with: "Please enter valid email", failed: 1)
             return
         }
-        guard let password = password, password.isValidPassword == true else {
+        guard let password = password, password.count >= Constants.PasswordMinimumLegth else {
             self.delegate?.requestFailed(with: "Please enter valid password", failed: 2)
             return
         }
@@ -56,7 +56,7 @@ class SignInViewModel: NSObject {
             self.delegate?.requestFailed(with: "Please enter valid email", failed: 2)
             return
         }
-        guard let password = password, password.isValidPassword == true else {
+        guard let password = password, password.count >= Constants.PasswordMinimumLegth else {
             self.delegate?.requestFailed(with: "Please enter valid password", failed: 3)
             return
         }
@@ -69,9 +69,9 @@ class SignInViewModel: NSObject {
             if status == false {
                 self.delegate?.requestFailed(with: error ?? "Request failed please try after sometime", failed: 0)
             } else {
+                NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "userSignedIn")))
                 FirebaseStoreManager.shared.createUserWithDetails(username: name)
                 self.delegate?.gotTheSuccessResponse()
-                NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: "userSignedIn")))
             }
         }
     }

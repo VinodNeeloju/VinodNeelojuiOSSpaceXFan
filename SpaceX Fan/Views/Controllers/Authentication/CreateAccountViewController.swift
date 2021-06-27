@@ -69,6 +69,7 @@ extension CreateAccountViewController : SignInProtocal {
     func gotTheSuccessResponse() {
         //SignIn successfull close the signin screen and go to the home screen
         Constants.KeyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+        self.addSignOutBarbuttonItemToTabbarController()
     }
     
     func requestFailed(with reason: String?, failed field: Int) {

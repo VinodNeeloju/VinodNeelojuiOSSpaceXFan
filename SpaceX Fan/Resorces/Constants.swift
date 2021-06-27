@@ -20,7 +20,7 @@ class Constants: NSObject {
     struct Apis {
         
         static var isLive : Bool {
-            return false
+            return true
         }
         
         static let BaseUrl = "https://api.spacexdata.com/v4"
@@ -61,4 +61,5 @@ class Constants: NSObject {
         static let Article = "Article"
     }
     
+    static let PasswordMinimumLegth = 6
 }

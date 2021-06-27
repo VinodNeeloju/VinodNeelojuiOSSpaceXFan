@@ -43,7 +43,7 @@ class FirebaseAuthenticationManager: NSObject {
             complation?(false, "Please enter valid email")
             return
         }
-        guard let password = password, password.isValidPassword == true else {
+        guard let password = password, password.count >= Constants.PasswordMinimumLegth else {
             complation?(false, "Please enter valid password")
             return
         }
@@ -67,7 +67,7 @@ class FirebaseAuthenticationManager: NSObject {
             complation?(false, "Please enter valid email")
             return
         }
-        guard let password = password, password.isValidPassword == true else {
+        guard let password = password, password.count >= Constants.PasswordMinimumLegth else {
             complation?(false, "Please enter valid password")
             return
         }
