@@ -34,3 +34,62 @@ extension String {
     }
      
 }
+
+extension NSMutableAttributedString {
+   
+    ///This method is to make the changes in font of the perticiular characters.
+    @discardableResult func font(name : String, size : Int) -> NSMutableAttributedString {
+        let range = (self.string as NSString).range(of: self.string)
+        self.addAttribute(.font, value: UIFont(name: name, size: CGFloat(size))!, range: range)
+        return self
+    }
+    
+    ///This method is to change the color or the entire string
+    @discardableResult func changeTextColor(to color : UIColor) -> NSMutableAttributedString {
+        let range = (self.string as NSString).range(of: self.string)
+        self.addAttribute(.foregroundColor, value: color, range: range)
+        return self
+    }
+    
+    ///This method is to change the color or the perticular string
+    @discardableResult func changeTextColor(of string : String, to color : UIColor) -> NSMutableAttributedString {
+        let range = (self.string as NSString).range(of: string)
+        self.addAttribute(.foregroundColor, value: color, range: range)
+        return self
+    }
+    
+    ///This method is to make the given string bold
+    @discardableResult func bold(_ text: String, _ size : Int) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: CGFloat(size))]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    ///This method is to make the given string bold and font size and text color
+    @discardableResult func bold(_ text: String, _ size : Int, _ textColor : UIColor) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font:  UIFont.boldSystemFont(ofSize: CGFloat(size)), .foregroundColor : textColor]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    ///This method is to make the given string normal and font size
+    @discardableResult func normal(_ text: String, _ size : Int) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: CGFloat(size))]
+        let normal = NSMutableAttributedString(string:text, attributes: attrs)
+        append(normal)
+        return self
+    }
+    
+    ///This method is to make the given string normal and font size and text color
+    @discardableResult func normal(_ text: String, _ size : Int, _ textColor : UIColor) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font:  UIFont.systemFont(ofSize: CGFloat(size)), .foregroundColor : textColor]
+        let normal = NSMutableAttributedString(string:text, attributes: attrs)
+        append(normal)
+        return self
+    }
+        
+}

@@ -30,6 +30,7 @@ class UpcomingLaunchesViewController: UIViewController {
         viewModel = UpcomingLaunchesViewModel.init(with: self)
         Constants.Loader.showLoader()
         viewModel?.fetchRocketsList()
+        self.tableView.refreshControl = PullToRefreshController.init(with: self, title: "Fetching upcoming rockets info")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +58,7 @@ class UpcomingLaunchesViewController: UIViewController {
 // MARK: - SpaceXRocketsProtocal
 extension UpcomingLaunchesViewController : UpcomingLaunchesProtocal {
     func gotTheResponse() {
+        self.tableView.refreshControl?.endRefreshing()
         Constants.Loader.dismissLoader {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -68,6 +70,7 @@ extension UpcomingLaunchesViewController : UpcomingLaunchesProtocal {
     }
     
     func requestFailed(with reason: String?) {
+        self.tableView.refreshControl?.endRefreshing()
         Constants.Loader.dismissLoader {
             print(reason ?? "")
             if reason != nil {
@@ -116,7 +119,7 @@ extension UpcomingLaunchesViewController : RocketInfoTableViewCellDelegate{
             if autherizedUser == true {
                 let flag = sender.isSelected
                 DispatchQueue.main.async {
-                    sender.isSelected = !sender.isSelected
+                    (sender as! FavoriteButton).setSelected(flag: !sender.isSelected)
                 }
                 guard let uid = FirebaseAuthenticationManager.shared.user?.uid else { return }
                 guard let id = rocketResponse.id else { return }
@@ -130,3 +133,9 @@ extension UpcomingLaunchesViewController : RocketInfoTableViewCellDelegate{
     }
 }
 
+
+extension UpcomingLaunchesViewController : PulltoRefreshProtocal {
+    func refreshStatrted(refreshController: UIRefreshControl) {
+        self.viewModel?.fetchRocketsList()
+    }
+}

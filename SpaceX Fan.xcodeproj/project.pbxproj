@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3AD46CA986D8DBA329991990 /* Pods_SpaceX_Fan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FF6CB8551150394BA6EF2A /* Pods_SpaceX_Fan.framework */; };
+		3F151E3A26896EBC0013F9DE /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F151E3926896EBC0013F9DE /* FavoriteButton.swift */; };
+		3F151E442689A7460013F9DE /* PullToRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F151E432689A7450013F9DE /* PullToRefreshController.swift */; };
 		3F15E95E26830B8C0024CEC3 /* RocketInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E95C26830B8C0024CEC3 /* RocketInfoTableViewCell.swift */; };
 		3F15E95F26830B8C0024CEC3 /* RocketInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F15E95D26830B8C0024CEC3 /* RocketInfoTableViewCell.xib */; };
 		3F15E964268312630024CEC3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15E963268312630024CEC3 /* UIView+Extension.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F151E3926896EBC0013F9DE /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		3F151E432689A7450013F9DE /* PullToRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshController.swift; sourceTree = "<group>"; };
 		3F15E95C26830B8C0024CEC3 /* RocketInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketInfoTableViewCell.swift; sourceTree = "<group>"; };
 		3F15E95D26830B8C0024CEC3 /* RocketInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RocketInfoTableViewCell.xib; sourceTree = "<group>"; };
 		3F15E963268312630024CEC3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				3F15E9712683291F0024CEC3 /* Controllers */,
 				3FA1B2C22687BA2F0072B63A /* CollectionViewCells */,
 				3F15E95B26830B6B0024CEC3 /* TableviewCells */,
+				3F151E3926896EBC0013F9DE /* FavoriteButton.swift */,
+				3F151E432689A7450013F9DE /* PullToRefreshController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -458,11 +464,13 @@
 				3F4D730B268858B400DF72EB /* PreviewImageViewModel.swift in Sources */,
 				3FA1B2C02687B3090072B63A /* DetailsVCInternalLinksTableViewCell.swift in Sources */,
 				3F838AF926865518007B77C0 /* UIApplication+Extension.swift in Sources */,
+				3F151E442689A7460013F9DE /* PullToRefreshController.swift in Sources */,
 				3F15E968268315140024CEC3 /* String+Extension.swift in Sources */,
 				3F15E973268329460024CEC3 /* NavigationViewController.swift in Sources */,
 				3F6905912682D4570065022C /* AppDelegate.swift in Sources */,
 				3F6905932682D4570065022C /* SceneDelegate.swift in Sources */,
 				3F838ABF26858063007B77C0 /* AuthenticateOptionsViewController.swift in Sources */,
+				3F151E3A26896EBC0013F9DE /* FavoriteButton.swift in Sources */,
 				3F6905C02682DBA30065022C /* SpaceXRocketsViewModel.swift in Sources */,
 				3F69059B2682D4570065022C /* SpaceX_Fan.xcdatamodeld in Sources */,
 				3F6905D82682E1470065022C /* Reddit.swift in Sources */,
@@ -633,7 +641,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "SpaceX Fan/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -641,6 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "in.eightfolds.SpaceX-Fan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -660,7 +669,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "SpaceX Fan/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -668,6 +677,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "in.eightfolds.SpaceX-Fan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

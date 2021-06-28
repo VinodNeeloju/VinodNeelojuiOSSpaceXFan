@@ -43,7 +43,7 @@ class DetailsVCFlightDetailsTableViewCell: UITableViewCell {
             self.eventTypeLabel.text = upcoming == true ? "Upcoming launch" : "Launched"
             if upcoming == false, let status = rocketResponse?.success {
                 self.launchStatusLabel.text = status == false ? "Failed" : "Success"
-                self.launchStatusLabel.textColor = status == false ? Constants.Colors.Red : Constants.Colors.Green
+                self.launchStatusLabel.textColor = status == false ? Constants.Colors.Red : Constants.Colors.Teal
             } else {
                 self.launchStatusLabel.text = ""
             }

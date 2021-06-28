@@ -27,25 +27,34 @@ class DetailsVCInternalLinksTableViewCell: UITableViewCell {
     public var webLinkObject : [String : String]? {
         didSet {
             var color : UIColor?
+            var image : UIImage?
             let key = webLinkObject?.keys.first
             switch key {
             case Constants.WebsiteLinks.Youtube:
                 color = Constants.Colors.WebsiteLinks.Youtube
+                image = #imageLiteral(resourceName: "youtube")
             case Constants.WebsiteLinks.Article:
                 color = Constants.Colors.WebsiteLinks.Article
+                image = #imageLiteral(resourceName: "article")
             case Constants.WebsiteLinks.Launch:
                 color = Constants.Colors.WebsiteLinks.Launch
+                image = #imageLiteral(resourceName: "launch")
             case Constants.WebsiteLinks.Webcast:
                 color = Constants.Colors.WebsiteLinks.Webcast
+                image = #imageLiteral(resourceName: "webcast")
             case Constants.WebsiteLinks.Wikipedia:
                 color = Constants.Colors.WebsiteLinks.Wikipedia
+                image = #imageLiteral(resourceName: "wikipedia")
             default:
                 color = Constants.Colors.WebsiteLinks.Wikipedia
+                image = #imageLiteral(resourceName: "wikipedia")
             }
             self.button.setTitle(key, for: .normal)
-            self.button.borderWidth = 1
+            self.button.borderWidth = 1.5
             self.button.borderColor = color!
             self.button.setTitleColor(color!, for: .normal)
+            self.button.setImage(image, for: .normal)
+            self.button.tintColor = color
         }
     }
     

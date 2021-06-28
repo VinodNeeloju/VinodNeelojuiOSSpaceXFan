@@ -18,7 +18,7 @@ class RocketDetailsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: FavoriteButton!
     
     public var viewModel : RocketDetailsViewModel?
     
@@ -64,7 +64,7 @@ class RocketDetailsViewController: UIViewController {
 extension RocketDetailsViewController : RocketDetailsProtocal {
     func favoriteStatusUpdated() {
         DispatchQueue.main.async {
-            self.favoriteButton.isSelected = self.viewModel!.isFavourited
+            self.favoriteButton.setSelected(flag: self.viewModel!.isFavourited)
         }
     }
 }

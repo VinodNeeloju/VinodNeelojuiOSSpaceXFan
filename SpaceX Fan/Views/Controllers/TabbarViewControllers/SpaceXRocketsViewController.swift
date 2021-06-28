@@ -29,6 +29,7 @@ class SpaceXRocketsViewController: UIViewController {
         viewModel = SpaceXRocketsViewModel.init(with: self)
         Constants.Loader.showLoader()
         viewModel?.fetchRocketsList()
+        self.tableView.refreshControl = PullToRefreshController.init(with: self, title: "Fetching new rokets info")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +56,7 @@ class SpaceXRocketsViewController: UIViewController {
 extension SpaceXRocketsViewController : SpaceXRocketsProtocal {
     
     func gotTheResponse() {
+        self.tableView.refreshControl?.endRefreshing()
         Constants.Loader.dismissLoader {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -66,6 +68,7 @@ extension SpaceXRocketsViewController : SpaceXRocketsProtocal {
     }
     
     func requestFailed(with reason: String?) {
+        self.tableView.refreshControl?.endRefreshing()
         Constants.Loader.dismissLoader {
             print(reason ?? "")
             if reason != nil {
@@ -114,7 +117,7 @@ extension SpaceXRocketsViewController : RocketInfoTableViewCellDelegate{
             if autherizedUser == true {
                 let flag = sender.isSelected
                 DispatchQueue.main.async {
-                    sender.isSelected = !sender.isSelected
+                    (sender as! FavoriteButton).setSelected(flag: !sender.isSelected)
                 }
                 guard let uid = FirebaseAuthenticationManager.shared.user?.uid else { return }
                 guard let id = rocketResponse.id else { return }
@@ -125,5 +128,11 @@ extension SpaceXRocketsViewController : RocketInfoTableViewCellDelegate{
                 }
             }
         })
+    }
+}
+
+extension SpaceXRocketsViewController : PulltoRefreshProtocal {
+    func refreshStatrted(refreshController: UIRefreshControl) {
+        self.viewModel?.fetchRocketsList()
     }
 }

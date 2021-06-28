@@ -19,7 +19,7 @@ class RocketInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var flightNumberLabel: UILabel!
     @IBOutlet weak var upcomingStatusLabel: UILabel!
     @IBOutlet weak var launchStatusLabel: UILabel!
-    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var bookmarkButton: FavoriteButton!
     
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
@@ -57,10 +57,10 @@ class RocketInfoTableViewCell: UITableViewCell {
         }
         
         if let name = rocketResponse.name {
-            self.nameLabel.text = "Name: \(name)"
+            self.nameLabel.attributedText = NSMutableAttributedString().bold("Name: ", 17).changeTextColor(to: .lightGray).bold(name, 17, .white) // "Name: \(name)"
         }
         if let flight_number = rocketResponse.flight_number {
-            self.flightNumberLabel.text = "Flight number: \(flight_number)"
+            self.flightNumberLabel.attributedText = NSMutableAttributedString().normal("Flight number: ", 15).changeTextColor(to: .lightGray).normal("\(flight_number)", 15, .white) //"Flight number: \(flight_number)"
         } else {
             self.flightNumberLabel.text = ""
         }
@@ -68,7 +68,7 @@ class RocketInfoTableViewCell: UITableViewCell {
             self.upcomingStatusLabel.text = upcoming == true ? "Upcoming launch" : "Launched"
             if upcoming == false, let status = rocketResponse.success {
                 self.launchStatusLabel.text = status == false ? "Failed" : "Success"
-                self.launchStatusLabel.textColor = status == false ? Constants.Colors.Red : Constants.Colors.Green
+                self.launchStatusLabel.textColor = status == false ? Constants.Colors.Red : Constants.Colors.Teal
             } else {
                 self.launchStatusLabel.text = ""
             }

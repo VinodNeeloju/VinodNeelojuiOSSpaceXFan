@@ -57,7 +57,7 @@ extension UIViewController {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "logout"), for: .normal)
         button.addTarget(self, action: #selector(signoutButtonAction), for: .touchUpInside)
-        button.tintColor = UIColor.white
+//        button.tintColor = UI
         let barButton = UIBarButtonItem.init(customView: button)
         let viewController = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.topViewController        
         viewController?.navigationItem.rightBarButtonItem  = barButton

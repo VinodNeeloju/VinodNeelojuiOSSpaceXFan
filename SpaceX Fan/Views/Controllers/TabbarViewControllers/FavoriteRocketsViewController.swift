@@ -29,7 +29,7 @@ class FavoriteRocketsViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.register(UINib.init(nibName: String(describing: RocketInfoTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: RocketInfoTableViewCell.self))
         viewModel = FavoriteRocketsViewModel.init(with: self)
-        
+        self.tableView.refreshControl = PullToRefreshController.init(with: self, title: "Refreshing your favorites")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +56,7 @@ class FavoriteRocketsViewController: UIViewController {
 //MARK: - FavouriteRocketsProtocal
 extension FavoriteRocketsViewController : FavouriteRocketsProtocal {
     func gotTheResponse() {
-        
+        self.tableView.refreshControl?.endRefreshing()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -66,6 +66,7 @@ extension FavoriteRocketsViewController : FavouriteRocketsProtocal {
     }
     
     func requestFailed(with reason: String?) {
+        self.tableView.refreshControl?.endRefreshing()
         Constants.KeyWindow?.makeToast(reason ?? "Something went wrong")
     }
 
@@ -152,3 +153,9 @@ extension FavoriteRocketsViewController  {
     }
 }
 
+
+extension FavoriteRocketsViewController : PulltoRefreshProtocal {
+    func refreshStatrted(refreshController: UIRefreshControl) {
+        self.viewModel?.fetchAllFavoriteRocketsList()
+    }
+}

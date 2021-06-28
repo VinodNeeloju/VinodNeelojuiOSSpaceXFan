@@ -38,6 +38,7 @@ class DetailsVCHeaderTableViewCell: UITableViewCell {
     ///This is to auto swipe the images with the time interval
     ///Fetching the current visible cell and moving to the next cell after perticular time interval
     func setTimerForAutoSwipe() {
+        self.timer?.invalidate()
         self.timer = nil
         self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { (_ t) in
             guard var row = self.getVisibleIndexPath()?.row else { return }

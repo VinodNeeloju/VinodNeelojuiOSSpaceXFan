@@ -41,13 +41,14 @@ class Constants: NSObject {
     ///Static colors used in the app
     struct Colors {
         static let Green = UIColor.init(hexString: "#039640", alpha: 1)
-        static let Red = UIColor.init(hexString: "#d13b3b", alpha: 1)
+        static let Teal = UIColor.init(hexString: "#34ECFF", alpha: 1)
+        static let Red = UIColor.init(hexString: "#ed5700", alpha: 1)
         static let AppBlue = UIColor.init(hexString: "#001C44", alpha: 1)
         struct WebsiteLinks {
             static let Youtube = UIColor.init(hexString: "#d40b0b", alpha: 1)
             static let Launch = UIColor.init(hexString: "#0b8009", alpha: 1)
             static let Wikipedia = UIColor.init(hexString: "#0d7cd6", alpha: 1)
-            static let Webcast = UIColor.init(hexString: "#057870", alpha: 1)
+            static let Webcast = UIColor.init(hexString: "#57586D", alpha: 1)
             static let Article = UIColor.init(hexString: "#db5807", alpha: 1)
         }
     }

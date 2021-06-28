@@ -41,7 +41,7 @@
                         <color key="textColor" red="0.0" green="0.1095293239" blue="0.26554149389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6n-vR-qIk">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6n-vR-qIk" customClass="FavoriteButton" customModule="SpaceX_Fan" customModuleProvider="target">
                         <rect key="frame" x="270" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="a4g-bS-5YS"/>
